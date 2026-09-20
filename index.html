@@ -15,7 +15,9 @@
 <link rel="canonical" href="https://eloa.cuoncient.com/">
 <meta property="og:url" content="https://eloa.cuoncient.com/">
 <meta property="og:locale" content="pt_BR">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='54' r='29' fill='none' stroke='%23582C46' stroke-width='8'/%3E%3Cpath d='M50,79 C34,64 34,38 50,21 C66,38 66,64 50,79 Z' fill='%23C97B63'/%3E%3C/svg%3E">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Montserrat:wght@400;500;600;700&display=swap">
@@ -146,7 +148,6 @@
 
   /* phone mockup: retrata a tela do app, por isso usa as cores fixas do app claro */
   .device{position:relative;justify-self:center;width:min(300px,100%);}
-  .device-rings{position:absolute;inset:-14% -22% auto auto;width:78%;opacity:.55;pointer-events:none;}
   .phone{
     position:relative;border-radius:40px;padding:10px;background:#2A1621;outline:1px solid var(--line);
     box-shadow:0 30px 60px -24px rgba(58,32,48,0.55);
@@ -155,7 +156,7 @@
   .screen .hello{font-family:var(--serif);font-size:20px;font-weight:600;color:#582C46;}
   .screen .date{font-size:11px;color:#6E5952;margin-bottom:16px;}
   .p-card{background:#FFFCFA;border-radius:18px;padding:14px 16px;margin-bottom:10px;box-shadow:0 6px 14px -8px rgba(88,44,70,0.25);}
-  .p-card h4{font-family:var(--serif);font-size:14px;font-weight:600;color:#582C46;margin:0 0 8px;}
+  .p-card .p-title{font-family:var(--serif);font-size:14px;font-weight:600;color:#582C46;margin:0 0 8px;}
   .p-row{display:flex;align-items:center;gap:8px;font-size:12px;line-height:1.9;}
   .dot{width:7px;height:7px;border-radius:50%;flex:0 0 auto;}
   .bar{background:#F7E9E6;border-radius:999px;height:7px;overflow:hidden;margin:2px 0 8px;}
@@ -251,7 +252,7 @@
 <header class="topbar">
   <div class="wrap">
     <a class="brand" href="#topo" aria-label="Eloá, início">
-      <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="54" r="29" fill="none" stroke="currentColor" stroke-width="6"/><path d="M50,79 C34,64 34,38 50,21 C66,38 66,64 50,79 Z" fill="#C97B63"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 20.7C6.4 17.2 5.1 10.6 9.6 5.5 10.9 4.1 12.7 3.2 14.7 2.9"/><path d="M12 20.7C17.6 17.2 18.9 10.6 14.4 5.5 13.1 4.1 11.3 3.2 9.3 2.9"/></svg>
       Eloá
     </a>
     <a href="#lista" class="btn btn-sm">Entrar na lista</a>
@@ -275,27 +276,24 @@
       </div>
 
       <div class="device" aria-label="Prévia da tela inicial do app Eloá" role="img">
-        <svg class="device-rings" viewBox="0 0 200 200" aria-hidden="true">
-          <circle cx="90" cy="90" r="70" fill="none" stroke="#582C46" stroke-width="9" opacity=".5"/>
-          <circle cx="128" cy="128" r="55" fill="none" stroke="#C97B63" stroke-width="9"/>
-        </svg>
+        
         <div class="phone" aria-hidden="true">
           <div class="screen">
             <div class="hello">Bom dia, Ana</div>
             <div class="date">Segunda, 12 de maio</div>
             <div class="p-card">
-              <h4>Seu momento</h4>
+              <div class="p-title">Seu momento</div>
               <div class="p-row"><span class="dot" style="background:#C97B63"></span>Energia moderada</div>
               <div class="p-row"><span class="dot" style="background:#582C46"></span>Foco alto</div>
               <div class="p-row"><span class="dot" style="background:#A7B8A9"></span>Humor tranquilo</div>
             </div>
             <div class="p-card">
-              <h4>Seu corpo</h4>
+              <div class="p-title">Seu corpo</div>
               <div class="bar"><i></i></div>
               <div class="p-caption">Alimentação 62% · Água 1,4 de 2,0 L</div>
             </div>
             <div class="p-card" style="margin-bottom:0">
-              <h4>Seu dia sugerido</h4>
+              <div class="p-title">Seu dia sugerido</div>
               <div class="p-plan"><b>08:00</b>30 min de movimento</div>
               <div class="p-plan"><b>09:00</b>Trabalho profundo</div>
               <div class="p-plan"><b>20:00</b>Momento de conexão</div>

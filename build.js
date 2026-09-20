@@ -32,6 +32,6 @@ const COPYRIGHT = '<!-- © 2026 Cuoncient (cuoncient.com). Código e design prop
   }).getObfuscatedCode();
   fs.writeFileSync('dist/app.js', js);
 
-  for (const f of ['robots.txt', 'sitemap.xml']) fs.copyFileSync(f, 'dist/' + f);
+  for (const f of ['robots.txt', 'sitemap.xml', 'favicon.svg', 'site.webmanifest', 'apple-touch-icon.png', 'icone-192.png', 'icone-512.png']) fs.copyFileSync(f, 'dist/' + f);
   console.log('build ok:', fs.readdirSync('dist').join(', '));
 })();
