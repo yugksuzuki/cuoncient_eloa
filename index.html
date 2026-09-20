@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Eloá — Lista de Espera</title>
+<meta name="description" content="Eloá conecta ciclo, corpo, rotina e propósito para ajudar você a entender o que merece sua energia hoje. Entre na lista de espera.">
+<meta property="og:title" content="Eloá — Você não precisa dar conta de tudo.">
+<meta property="og:description" content="Ciclo, corpo, rotina e propósito em um só app. Entre na lista de espera.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#EDE4DC">
+<meta name="author" content="Cuoncient agency">
+<meta name="copyright" content="© 2026 Cuoncient">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://eloa.cuoncient.com/">
+<meta property="og:url" content="https://eloa.cuoncient.com/">
+<meta property="og:locale" content="pt_BR">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='54' r='29' fill='none' stroke='%23582C46' stroke-width='8'/%3E%3Cpath d='M50,79 C34,64 34,38 50,21 C66,38 66,64 50,79 Z' fill='%23C97B63'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Montserrat:wght@400;500;600;700&display=swap">
+<style>
+  /* ---------- Tokens (Eloá Design System) ---------- */
+  :root{
+    --bg:#EDE4DC;          /* areia */
+    --surface:#FFFCFA;     /* branco-suave */
+    --surface-2:#F7E9E6;   /* rosa-nude */
+    --ink:#3B2A28;         /* texto-principal */
+    --ink-soft:#6E5952;    /* texto-suave */
+    --line:#E3D3CC;        /* borda-suave */
+    --accent:#582C46;      /* ameixa */
+    --accent-warm:#C97B63; /* terracota — decorativo */
+    --sage:#A7B8A9;        /* verde-salvia */
+    --btn-bg:#582C46;
+    --btn-ink:#FFFCFA;
+    --btn-hover:#471F38;
+    --panel:#582C46;
+    --panel-ink:#FFFCFA;
+    --panel-soft:#EBDDE4;
+    --panel-line:rgba(255,252,250,0.18);
+    --focus:#C97B63;
+    --error:#9B3B2E;
+    --shadow:0 18px 40px -18px rgba(88,44,70,0.35);
+
+    /* espaçamento, base 4 */
+    --s-2:8px; --s-3:12px; --s-4:16px; --s-5:20px; --s-6:24px; --s-8:32px;
+    --s-10:40px; --s-12:48px; --s-16:64px; --s-24:96px; --s-32:128px;
+
+    --serif:'Playfair Display',Georgia,'Times New Roman',serif;
+    --sans:'Montserrat',-apple-system,'Segoe UI',Roboto,sans-serif;
+    color-scheme:light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#1F171D; --surface:#2A2027; --surface-2:#35262F;
+      --ink:#F3E9E5; --ink-soft:#C9B4B9; --line:#43333C;
+      --accent:#E8BDB6; --accent-warm:#D9957F;
+      --btn-bg:#E8BDB6; --btn-ink:#2A1621; --btn-hover:#F3D0CA;
+      --panel:#3A2030; --panel-ink:#F3E9E5; --panel-soft:#D8C3CD;
+      --panel-line:rgba(243,233,229,0.16);
+      --focus:#E8BDB6; --error:#F0A493;
+      --shadow:0 18px 40px -18px rgba(0,0,0,0.6);
+      color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#1F171D; --surface:#2A2027; --surface-2:#35262F;
+    --ink:#F3E9E5; --ink-soft:#C9B4B9; --line:#43333C;
+    --accent:#E8BDB6; --accent-warm:#D9957F;
+    --btn-bg:#E8BDB6; --btn-ink:#2A1621; --btn-hover:#F3D0CA;
+    --panel:#3A2030; --panel-ink:#F3E9E5; --panel-soft:#D8C3CD;
+    --panel-line:rgba(243,233,229,0.16);
+    --focus:#E8BDB6; --error:#F0A493;
+    --shadow:0 18px 40px -18px rgba(0,0,0,0.6);
+    color-scheme:dark;
+  }
+
+  /* ---------- Base ---------- */
+  *{box-sizing:border-box;}
+  [hidden]{display:none!important;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:var(--sans);font-size:16px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;caret-color:var(--accent);accent-color:var(--accent);
+  }
+  ::selection{background:var(--accent);color:var(--bg);}
+  h1,h2,h3{font-family:var(--serif);color:var(--accent);margin:0;text-wrap:balance;font-weight:600;letter-spacing:-0.01em;}
+  p{margin:0;}
+  a{color:var(--accent);text-underline-offset:3px;}
+  :focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:6px;}
+  .wrap{max-width:1080px;margin:0 auto;padding-inline:20px;}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    min-height:48px;border:none;border-radius:999px;padding:0 28px;
+    font-family:var(--sans);font-weight:700;font-size:15px;line-height:1;
+    text-decoration:none;cursor:pointer;white-space:nowrap;
+    background:var(--btn-bg);color:var(--btn-ink);
+    transition:background-color .2s ease, transform .2s cubic-bezier(.2,.8,.2,1);
+  }
+  .btn:hover{background:var(--btn-hover);}
+  .btn:active{transform:translateY(1px);}
+  .btn[disabled]{opacity:.65;cursor:progress;}
+  .btn-sm{min-height:40px;padding:0 18px;font-size:13px;}
+
+  /* ---------- Header ---------- */
+  .topbar{
+    position:sticky;top:env(safe-area-inset-top,0px);z-index:10;
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
+    -webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:12px;}
+  .brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:600;font-size:22px;color:var(--accent);text-decoration:none;}
+  .brand svg{width:26px;height:26px;}
+
+  /* ---------- Hero ---------- */
+  .hero{padding-block:var(--s-16) var(--s-24);overflow-x:clip;}
+  .hero .wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,0.85fr);gap:var(--s-16);align-items:center;}
+  .hero h1{font-size:clamp(38px,5.4vw,62px);line-height:1.04;letter-spacing:-0.02em;margin-bottom:var(--s-6);}
+  .hero .lead{font-size:18px;line-height:1.65;max-width:34em;margin-bottom:var(--s-10);}
+
+  .signup{
+    display:flex;gap:8px;background:var(--surface);padding:6px;border-radius:999px;
+    box-shadow:var(--shadow);max-width:480px;
+  }
+  .signup input{
+    flex:1 1 auto;min-width:0;border:none;background:transparent;padding:0 18px;min-height:48px;
+    font-family:var(--sans);font-size:16px;color:var(--ink);border-radius:999px;
+  }
+  .signup input::placeholder{color:var(--ink-soft);}
+  .signup input:focus-visible{outline:2px solid var(--focus);outline-offset:0;}
+  .form-note{margin-top:var(--s-3);font-size:13px;color:var(--ink-soft);max-width:480px;}
+  .form-status{
+    display:flex;align-items:flex-start;gap:12px;max-width:480px;margin-top:var(--s-4);
+    padding:16px 18px;border-radius:16px;font-size:14px;line-height:1.5;font-weight:500;
+    background:var(--surface);border:1px solid var(--line);color:var(--ink);
+  }
+  .form-status svg{flex:0 0 auto;margin-top:1px;}
+  .form-status.is-success{border-color:var(--sage);}
+  .form-status.is-error{border-color:var(--error);}
+  .form-status.is-error svg{color:var(--error);}
+  .form-status strong{color:var(--accent);}
+
+  /* phone mockup: retrata a tela do app, por isso usa as cores fixas do app claro */
+  .device{position:relative;justify-self:center;width:min(300px,100%);}
+  .device-rings{position:absolute;inset:-14% -22% auto auto;width:78%;opacity:.55;pointer-events:none;}
+  .phone{
+    position:relative;border-radius:40px;padding:10px;background:#2A1621;outline:1px solid var(--line);
+    box-shadow:0 30px 60px -24px rgba(58,32,48,0.55);
+  }
+  .screen{border-radius:31px;background:#EDE4DC;padding:26px 16px 20px;color:#3B2A28;}
+  .screen .hello{font-family:var(--serif);font-size:20px;font-weight:600;color:#582C46;}
+  .screen .date{font-size:11px;color:#6E5952;margin-bottom:16px;}
+  .p-card{background:#FFFCFA;border-radius:18px;padding:14px 16px;margin-bottom:10px;box-shadow:0 6px 14px -8px rgba(88,44,70,0.25);}
+  .p-card h4{font-family:var(--serif);font-size:14px;font-weight:600;color:#582C46;margin:0 0 8px;}
+  .p-row{display:flex;align-items:center;gap:8px;font-size:12px;line-height:1.9;}
+  .dot{width:7px;height:7px;border-radius:50%;flex:0 0 auto;}
+  .bar{background:#F7E9E6;border-radius:999px;height:7px;overflow:hidden;margin:2px 0 8px;}
+  .bar i{display:block;height:100%;width:62%;background:#A7B8A9;border-radius:999px;transform-origin:left;}
+  .p-caption{font-size:11px;color:#6E5952;}
+  .p-plan{display:flex;gap:10px;font-size:12px;line-height:1.5;padding:4px 0;}
+  .p-plan b{color:#A4543D;font-weight:700;min-width:40px;}
+  @media (prefers-reduced-motion: no-preference){
+    .bar i{animation:fill 1.4s cubic-bezier(.16,1,.3,1) .3s both;}
+    @keyframes fill{from{transform:scaleX(.15);}to{transform:scaleX(1);}}
+  }
+
+  /* ---------- Manifesto ---------- */
+  .manifesto{background:var(--surface);border-block:1px solid var(--line);padding-block:var(--s-24);}
+  .roles{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:var(--s-10);padding:0;list-style:none;}
+  .roles li{background:var(--surface-2);color:var(--accent);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;}
+  .manifesto blockquote{
+    margin:0;font-family:var(--serif);font-style:italic;font-weight:500;
+    font-size:clamp(26px,3.6vw,40px);line-height:1.3;color:var(--accent);max-width:22em;text-wrap:balance;
+  }
+  .manifesto blockquote span{color:var(--ink);}
+
+  /* ---------- Como funciona ---------- */
+  .how{padding-block:var(--s-24) var(--s-16);}
+  .section-head{max-width:36em;margin-bottom:var(--s-12);}
+  .section-head h2{font-size:clamp(28px,3.4vw,38px);line-height:1.15;margin-bottom:var(--s-4);}
+  .section-head p{color:var(--ink-soft);font-size:17px;}
+  .steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s-10);counter-reset:step;}
+  .step{border-top:1px solid var(--line);padding-top:var(--s-5);}
+  .step::before{
+    counter-increment:step;content:counter(step);display:block;
+    font-family:var(--serif);font-size:44px;line-height:1;color:var(--accent);margin-bottom:var(--s-4);
+    font-variant-numeric:lining-nums;
+  }
+  .step h3{font-family:var(--sans);font-size:17px;font-weight:700;color:var(--ink);margin-bottom:6px;}
+  .step p{font-size:15px;color:var(--ink-soft);line-height:1.55;}
+
+  /* ---------- Pilares ---------- */
+  .pillars{padding-block:var(--s-16) var(--s-24);}
+  .pillar-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--s-10);row-gap:var(--s-10);}
+  .pillar{display:grid;grid-template-columns:40px 1fr;column-gap:14px;align-items:start;}
+  .pillar svg{width:24px;height:24px;color:var(--accent);margin-top:3px;justify-self:start;}
+  .pillar h3{font-family:var(--sans);font-size:16px;font-weight:700;color:var(--ink);line-height:1.4;}
+  .pillar p{font-size:14px;color:var(--ink-soft);line-height:1.5;}
+
+  /* ---------- Planos ---------- */
+  .plans{padding-bottom:var(--s-24);}
+  .plans-panel{background:var(--panel);color:var(--panel-ink);border-radius:32px;padding:var(--s-16) var(--s-12);}
+  .plans-panel h2{color:var(--panel-ink);font-size:clamp(26px,3vw,34px);line-height:1.15;max-width:18em;margin-bottom:var(--s-10);}
+  .plans-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s-10);margin-bottom:var(--s-12);}
+  .plan h3{font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--panel-soft);padding-bottom:var(--s-3);border-bottom:1px solid var(--panel-line);margin-bottom:var(--s-4);}
+  .plan ul{margin:0;padding:0;list-style:none;display:grid;gap:10px;}
+  .plan li{display:flex;gap:10px;font-size:15px;line-height:1.5;color:var(--panel-ink);}
+  .plan li svg{flex:0 0 auto;margin-top:4px;color:var(--panel-soft);}
+  .plans-cta{display:flex;align-items:center;gap:var(--s-5);flex-wrap:wrap;}
+  .plans-cta .btn{background:#FFFCFA;color:#582C46;}
+  .plans-cta .btn:hover{background:#F7E9E6;}
+  .plans-cta p{font-size:14px;color:var(--panel-soft);}
+
+  /* ---------- Footer ---------- */
+  footer{border-top:1px solid var(--line);padding-block:var(--s-12);}
+  footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:var(--s-6);flex-wrap:wrap;}
+  .tagline{font-size:14px;color:var(--ink-soft);}
+  .insta{display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-weight:700;font-size:14px;text-decoration:none;min-height:44px;}
+  .insta:hover{text-decoration:underline;}
+
+  /* ---------- Responsivo ---------- */
+  @media (max-width:880px){
+    .hero .wrap{grid-template-columns:1fr;gap:var(--s-12);}
+    .pillar-list{grid-template-columns:repeat(2,minmax(0,1fr));}
+  }
+  @media (max-width:640px){
+    .hero{padding-block:var(--s-10) var(--s-16);}
+    .hero .lead{font-size:17px;margin-bottom:var(--s-8);}
+    .signup{flex-direction:column;border-radius:24px;padding:8px;}
+    .signup input{min-height:52px;}
+    .signup .btn{width:100%;min-height:52px;}
+    .manifesto{padding-block:var(--s-16);}
+    .how{padding-block:var(--s-16) var(--s-10);}
+    .steps{grid-template-columns:1fr;gap:var(--s-8);}
+    .pillars{padding-block:var(--s-10) var(--s-16);}
+    .pillar-list{grid-template-columns:1fr;row-gap:var(--s-6);}
+    .plans-panel{padding:var(--s-10) var(--s-6);border-radius:24px;}
+    .plans-grid{grid-template-columns:1fr;gap:var(--s-8);}
+    .plans-cta .btn{width:100%;}
+    .topbar .btn-sm{padding:0 14px;}
+  }
+</style>
+</head>
+<body>
+
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#topo" aria-label="Eloá, início">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="54" r="29" fill="none" stroke="currentColor" stroke-width="6"/><path d="M50,79 C34,64 34,38 50,21 C66,38 66,64 50,79 Z" fill="#C97B63"/></svg>
+      Eloá
+    </a>
+    <a href="#lista" class="btn btn-sm">Entrar na lista</a>
+  </div>
+</header>
+
+<main id="topo">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Você não precisa dar conta de tudo.</h1>
+        <p class="lead">Eloá conecta ciclo, corpo, rotina e propósito para ajudar você a entender o que merece sua energia hoje — não mais uma lista de tarefas, e sim uma Home que sabe onde você está.</p>
+
+        <form id="lista" class="signup" novalidate style="scroll-margin-top:100px;">
+          <label for="eloa-email" style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;">Seu e-mail</label>
+          <input id="eloa-email" name="email" type="email" required placeholder="seu@email.com" autocomplete="email" inputmode="email" aria-describedby="eloa-note">
+          <button id="eloa-submit" type="submit" class="btn">Entrar na lista</button>
+        </form>
+        <p id="eloa-note" class="form-note">Lançamento em breve. Usamos seu e-mail só para avisar quando as primeiras vagas abrirem — sem spam.</p>
+        <div id="eloa-status" class="form-status" role="status" aria-live="polite" hidden></div>
+      </div>
+
+      <div class="device" aria-label="Prévia da tela inicial do app Eloá" role="img">
+        <svg class="device-rings" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="90" cy="90" r="70" fill="none" stroke="#582C46" stroke-width="9" opacity=".5"/>
+          <circle cx="128" cy="128" r="55" fill="none" stroke="#C97B63" stroke-width="9"/>
+        </svg>
+        <div class="phone" aria-hidden="true">
+          <div class="screen">
+            <div class="hello">Bom dia, Ana</div>
+            <div class="date">Segunda, 12 de maio</div>
+            <div class="p-card">
+              <h4>Seu momento</h4>
+              <div class="p-row"><span class="dot" style="background:#C97B63"></span>Energia moderada</div>
+              <div class="p-row"><span class="dot" style="background:#582C46"></span>Foco alto</div>
+              <div class="p-row"><span class="dot" style="background:#A7B8A9"></span>Humor tranquilo</div>
+            </div>
+            <div class="p-card">
+              <h4>Seu corpo</h4>
+              <div class="bar"><i></i></div>
+              <div class="p-caption">Alimentação 62% · Água 1,4 de 2,0 L</div>
+            </div>
+            <div class="p-card" style="margin-bottom:0">
+              <h4>Seu dia sugerido</h4>
+              <div class="p-plan"><b>08:00</b>30 min de movimento</div>
+              <div class="p-plan"><b>09:00</b>Trabalho profundo</div>
+              <div class="p-plan"><b>20:00</b>Momento de conexão</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="manifesto" aria-label="Para quem é o Eloá">
+    <div class="wrap">
+      <ul class="roles" aria-label="Os papéis que ela equilibra">
+        <li>Profissional</li><li>Mãe</li><li>Parceira</li><li>Cuidadora</li><li>Empreendedora</li><li>Filha</li><li>Amiga</li>
+      </ul>
+      <blockquote>
+        Equilíbrio não significa dar a mesma quantidade de energia para tudo. <span>Significa entender o que precisa da sua energia hoje.</span>
+      </blockquote>
+    </div>
+  </section>
+
+  <section class="how">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Três perguntas. Um dia possível.</h2>
+        <p>Ao abrir o Eloá, você não vê uma lista de pendências — vê o seu momento, com sugestões para o dia. Sempre recomendação, nunca cobrança.</p>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <h3>Quanto tempo você tem?</h3>
+          <p>4h, 6h, 8h ou um valor seu — sem fingir que o dia tem mais horas do que tem.</p>
+        </li>
+        <li class="step">
+          <h3>Como você está?</h3>
+          <p>Baixa energia, normal ou alta — o Eloá ajusta a sugestão ao seu corpo, não ao ideal.</p>
+        </li>
+        <li class="step">
+          <h3>Receba seu dia</h3>
+          <p>Uma ordem sugerida entre trabalho, corpo, casa e relacionamento — reordene como quiser.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="pillars">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Nove pilares, uma única experiência</h2>
+        <p>Concorrentes resolvem ciclo. Ou fitness. Ou dieta. Ou planner. O Eloá conecta tudo isso em recomendações para o seu dia.</p>
+      </div>
+      <ul class="pillar-list">
+        <li class="pillar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="4.3" r="1.1" fill="currentColor" stroke="none"/><circle cx="19.7" cy="12" r="1.1" fill="currentColor" stroke="none"/><circle cx="12" cy="19.7" r="1.1" fill="currentColor" stroke="none"/><circle cx="4.3" cy="12" r="1.1" fill="currentColor" stroke="none"/></svg><div><h3>Ciclo</h3><p>Padrões pessoais, não sentenças.</p></div></li>
+        <li class="pillar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="14" r="7"/><path d="M12,7 L12,4.3"/></svg><div><h3>Alimentação</h3><p>Estimativa, nunca julgamento.</p></div></li>
+        <li class="pillar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="9.5" width="4" height="5" rx="1"/><rect x="18" y="9.5" width="4" height="5" rx="1"/><line x1="6" y1="12" x2="18" y2="12"/></svg><div><h3>Movimento</h3><p>Do treino pesado à caminhada.</p></div></li>
+        <li class="pillar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2.5"/><line x1="3" y1="9.5" x2="21" y2="9.5"/><line x1="8" y1="3" x2="8" y2="6.5"/><line x1="16" y1="3" x2="16" y2="6.5"/></svg><div><h3>Rotina</h3><p>Um dia planejado com você.</p></div></li>
+        <li class="pillar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M8,8 V6.3 C8,5 9,4 10.3,4 H13.7 C15,4 16,5 16,6.3 V8"/><line x1="3" y1="13.5" x2="21" y2="13.5"/></svg><div><h3>Trabalho</h3><p>Tarefas no seu ritmo de energia.</p></div></li>
+        <li class="pillar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4,11.5 L12,4 L20,11.5"/><path d="M6.3,10 V20 H17.7 V10"/></svg><div><h3>Casa</h3><p>Uma tarefa prioritária, não dez.</p></div></li>
+        <li class="pillar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12,20 C6.5,15.3 3.5,11.7 3.5,8.3 C3.5,5.5 5.8,3.5 8.3,3.5 C10.1,3.5 11.4,4.6 12,5.9 C12.6,4.6 13.9,3.5 15.7,3.5 C18.2,3.5 20.5,5.5 20.5,8.3 C20.5,11.7 17.5,15.3 12,20 Z"/></svg><div><h3>Relacionamento</h3><p>Espaço pra atenção de verdade.</p></div></li>
+        <li class="pillar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="3" x2="12" y2="21"/><line x1="6.5" y1="9" x2="17.5" y2="9"/></svg><div><h3>Espiritualidade</h3><p>Versículo e reflexão diária.</p></div></li>
+        <li class="pillar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4.5" y1="20" x2="4.5" y2="14.5"/><line x1="11" y1="20" x2="11" y2="9.5"/><line x1="17.5" y1="20" x2="17.5" y2="5"/></svg><div><h3>Progresso</h3><p>Consistência, nunca perfeição.</p></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="plans">
+    <div class="wrap">
+      <div class="plans-panel">
+        <h2>Free é útil de verdade. Premium leva mais longe.</h2>
+        <div class="plans-grid">
+          <div class="plan">
+            <h3>Grátis</h3>
+            <ul>
+              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4,12 L10,18 L20,6"/></svg>Acompanhamento do ciclo</li>
+              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4,12 L10,18 L20,6"/></svg>Diário alimentar</li>
+              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4,12 L10,18 L20,6"/></svg>Checklist diário</li>
+            </ul>
+          </div>
+          <div class="plan">
+            <h3>Premium</h3>
+            <ul>
+              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4,12 L10,18 L20,6"/></svg>Tudo do plano grátis</li>
+              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4,12 L10,18 L20,6"/></svg>Planejamento completo do dia</li>
+              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4,12 L10,18 L20,6"/></svg>Trilhas de autocuidado e progresso</li>
+            </ul>
+          </div>
+        </div>
+        <div class="plans-cta">
+          <a href="#lista" class="btn">Quero ser avisada</a>
+          <p>Quem está na lista fica sabendo primeiro.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="tagline"><span style="font-family:var(--serif);font-size:20px;color:var(--accent);margin-right:10px;">Eloá</span>Seu ritmo. Uma vida mais plena.</p>
+    <a class="insta" href="https://instagram.com/eloa.app" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
+      @eloa.app
+    </a>
+  </div>
+</footer>
+
+<script src="/app.js" defer></script>
+
+</body>
+</html>
